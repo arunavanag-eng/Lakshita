@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fastrr x Lakshita: a customer journey proposal</title>
+<style>
+:root{--ink:#1d1420;--ink2:#3d3340;--mute:#6f6573;--line:#e6dde8;--paper:#faf6f1;--alt:#f3ecf2;--accent:#7a2e6b;--accent-d:#5c1f50;--dark:#1d1420;--ok:#1f7a4d;--serif:Georgia,'Times New Roman',serif;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.55;font-size:17px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:72px 0}
+section.alt{background:var(--alt)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.15}
+.nav{position:sticky;top:0;z-index:20;background:rgba(250,246,241,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
+.nav .wrap{display:flex;align-items:center;gap:6px;overflow-x:auto;padding-top:11px;padding-bottom:11px;white-space:nowrap}
+.logo{font-family:var(--serif);font-weight:700;font-size:20px;margin-right:14px}
+.logo i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-left:2px}
+.nav a.l{font-size:14px;color:var(--mute);text-decoration:none;padding:5px 10px;border-radius:999px}
+.nav a.l:hover,.nav a.l.on{background:var(--accent);color:#fff}
+.hero{padding:76px 0 56px;background:linear-gradient(180deg,#f3ecf2,var(--paper))}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.sub2{font-size:19px;color:var(--mute);margin:6px 0 14px;font-family:var(--serif);font-style:italic}
+.hero h1{font-size:46px;max-width:860px;margin-bottom:18px}
+.lead{font-size:19px;color:var(--ink2);max-width:780px}
+.meta{display:flex;flex-wrap:wrap;gap:28px;margin:26px 0;font-size:13px;color:var(--mute)}
+.meta b{display:block;font-size:15px;color:var(--ink);margin-top:2px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:10px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.stat b{font-family:var(--serif);font-size:30px;display:block;color:var(--accent-d)}
+.stat span{font-size:14px;color:var(--mute)}
+.kick{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:8px}
+.ts{font-size:15px;color:var(--mute);font-weight:700;margin-bottom:8px}
+h2.t{font-size:34px;max-width:860px;margin-bottom:14px}
+.sub{font-size:18px;color:var(--ink2);max-width:820px;margin-bottom:26px}
+.small{font-size:14.5px;color:var(--mute)}
+.persona{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:8px}
+.avatar{flex:none;width:56px;height:56px;border-radius:50%;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:26px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{background:var(--alt);border-radius:999px;padding:3px 12px;font-size:13px;font-weight:700;color:var(--accent-d)}
+.idx{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.idx a{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.idx a:hover{border-color:var(--accent)}
+.idx i{font-style:normal;font-family:var(--serif);font-size:22px;color:var(--accent-d);margin-right:8px}
+.idx b{font-size:17px}
+.idx span{display:block;font-size:13.5px;color:var(--mute);margin-top:2px;padding-left:30px}
+.moment{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.col{border-radius:14px;padding:16px 18px;background:#fff;border:1px solid var(--line)}
+.col.f{background:#fbf3fa;border-color:#e3c6dc}
+.col h5{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.col.f h5{color:var(--accent-d)}
+.col ul{padding-left:18px;font-size:15.5px;color:var(--ink2)}
+.col li{margin-bottom:6px}
+.feat{margin-top:16px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:14px}
+section.alt .feat{background:var(--paper)}
+.feat h4{font-family:var(--sans);font-size:17px;margin-bottom:4px}
+.feat p{font-size:16px;color:var(--ink2)}
+.src{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--accent-d)}
+.proof{margin-top:16px;display:flex;gap:16px;align-items:center;background:var(--dark);color:#fff;border-radius:14px;padding:16px 20px}
+.proof b{font-family:var(--serif);font-size:28px;white-space:nowrap}
+.proof span{font-size:14.5px;color:#d9ccd8}
+/* phone */
+.phone{width:340px;background:#fff;border:10px solid #1d1420;border-radius:34px;overflow:hidden;box-shadow:0 18px 40px rgba(29,20,32,.18);position:sticky;top:76px}
+.pbar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:#1d1420;color:#fff;font-size:14px;font-weight:700}
+.pbody{padding:14px;font-size:14px;background:#fff}
+.pimg{height:170px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.pimg svg{width:70px;height:70px}
+.pt{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.2}
+.pp{font-size:19px;font-weight:700}
+.pp s{font-size:14px;font-weight:400;color:var(--mute)}
+.stars{color:#d49a1a;letter-spacing:2px;font-size:13px}
+.box{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:10px;font-size:14px}
+.box.edd{background:#f2faf5;border-color:#bfe3cf}
+.box.edd b{display:block}
+.good{color:var(--ok);font-weight:700}
+.late{color:#9a2b0b;font-weight:700}
+.okc{color:var(--ok);font-weight:700;font-size:12.5px}
+.btn{display:block;width:100%;margin-top:12px;padding:12px;border:0;border-radius:10px;background:var(--dark);color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.btn.acc{background:var(--accent)}
+.hint{font-size:11.5px;color:var(--mute);margin-top:10px;line-height:1.35}
+.sizes{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.sizes span{border:1px solid var(--line);border-radius:8px;padding:4px 9px;font-size:12.5px}
+.sizes span.s{border-color:var(--accent);background:#fbf3fa;font-weight:700}
+.ban{background:var(--dark);color:#fff;border-radius:10px;padding:9px 12px;font-size:13.5px;margin-bottom:10px}
+.ban b{color:#f0b7e4}
+.msg{font-size:13.5px;margin-bottom:6px}
+.msg em{font-style:normal;font-weight:700;color:var(--accent-d)}
+.trk{position:relative;height:6px;background:#eadfe9;border-radius:6px;margin:10px 30px 40px}
+.trk .fl{position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:6px;transition:width .3s}
+.nd{position:absolute;top:-7px;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:#fff;border:2px solid #cdbbcb;font-size:11px;display:flex;align-items:center;justify-content:center;font-weight:700}
+.nd.done{background:var(--ok);border-color:var(--ok);color:#fff}
+.nd small{position:absolute;top:24px;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--mute);text-align:center;white-space:nowrap;font-weight:400;line-height:1.2}
+.ci{display:flex;gap:10px;align-items:center}
+.cth{width:44px;height:54px;border-radius:8px;flex:none}
+.addb{border:1px solid var(--accent);background:#fff;color:var(--accent-d);border-radius:8px;padding:6px 10px;font-weight:700;cursor:pointer;font:inherit;font-weight:700;font-size:13px}
+.addb.on{background:var(--accent);color:#fff}
+.opt{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;margin-top:8px;cursor:pointer;width:100%;text-align:left;font:inherit;font-size:14px;color:var(--ink)}
+.opt.sel{border:2px solid var(--ok);background:#f2faf5}
+.opt b{display:block;font-size:14.5px}
+.opt .s{font-size:12.5px;color:var(--mute)}
+.opt .pr{font-weight:700;white-space:nowrap;font-size:13px}
+.unl{display:none;margin-top:8px;font-size:12.5px;font-weight:700;color:var(--ok)}
+.unl.show{display:block}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.pay{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:8px;font-size:14px}
+.pay.on{border:2px solid var(--ok);background:#f2faf5}
+.risk{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.rt{background:#fdeee9;color:#9a2b0b;border-radius:999px;padding:2px 10px;font-size:12px;font-weight:700}
+.wa{background:#ece5dd;border-radius:14px;padding:12px}
+.bub{background:#fff;border-radius:4px 12px 12px 12px;padding:9px 12px;font-size:13.5px;margin-bottom:8px;max-width:94%;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.bub b{display:block;font-size:12.5px;color:var(--accent-d);margin-bottom:2px}
+.bub .t{display:block;text-align:right;font-size:11px;color:var(--mute);margin-top:2px}
+.bub .lk{display:block;margin-top:6px;border:1px solid var(--line);border-radius:8px;padding:6px 10px;text-align:center;font-weight:700;color:#0a6e8a;font-size:13px}
+/* others */
+.pcards,.igrid,.ccards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.pc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.pc .av{width:48px;height:48px;border-radius:50%;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:22px;margin-bottom:12px}
+.pc h4{font-size:20px;margin-bottom:2px}
+.pc .loc{font-size:14px;color:var(--mute);margin-bottom:10px}
+.pc p{font-size:16px;color:var(--ink2)}
+.pill{display:inline-block;background:#f6e6f2;color:var(--accent-d);border-radius:999px;padding:3px 12px;font-size:13px;font-weight:700;margin:10px 0 8px}
+.pc .out{font-weight:700;color:var(--ink);font-size:15.5px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:15.5px}
+th{background:var(--dark);color:#fff;text-align:left;padding:12px 14px;font-size:13.5px;letter-spacing:.03em}
+td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:700;width:30%}
+.pillo,.pillc{display:inline-block;border-radius:999px;padding:1px 10px;font-size:12px;font-weight:700;margin-right:8px}
+.pillo{background:#e3f4ea;color:var(--ok)}
+.pillc{background:#fff0d6;color:#8a5a00}
+.ig{background:var(--dark);color:#fff;border-radius:16px;padding:22px}
+.ig b{display:block;font-family:var(--serif);font-size:36px;line-height:1.05}
+.ig span{display:block;margin-top:8px;font-size:15px;color:#d9ccd8}
+.cc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.cc h4{font-size:18px;margin-bottom:12px}
+.cc .r{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:15.5px}
+.cc .r span:first-child{color:var(--mute)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.ncard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}
+.ncard i{font-style:normal;font-family:var(--serif);font-size:28px;color:var(--accent)}
+.ncard h4{font-size:19px;margin:6px 0}
+.ncard p{font-size:15.5px;color:var(--ink2)}
+.cta{margin-top:26px;display:flex;justify-content:space-between;align-items:center;gap:24px;background:var(--dark);color:#fff;border-radius:18px;padding:28px 30px}
+.cta h3{font-size:26px;margin-bottom:6px}
+.cta p{color:#d9ccd8;font-size:15.5px}
+.cta a.b{flex:none;background:var(--accent);color:#fff;text-decoration:none;padding:14px 24px;border-radius:999px;font-weight:700}
+footer{padding:36px 0 56px;font-size:13.5px;color:var(--mute)}
+footer p{margin-top:8px;max-width:900px}
+@media (max-width:980px){.moment{grid-template-columns:1fr}.phone{position:static;margin:10px auto 0}.stats{grid-template-columns:1fr 1fr}.idx,.pcards,.igrid,.ccards,.ngrid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.hero h1{font-size:32px}h2.t{font-size:26px}.cols,.idx,.pcards,.igrid,.ccards,.ngrid{grid-template-columns:1fr}.cta{flex-direction:column;align-items:flex-start}.phone{width:100%;max-width:340px}section{padding:52px 0}}
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="wrap">
+  <span class="logo">fastrr<i></i></span>
+  <a class="l" href="#c1">Arrives</a>
+  <a class="l" href="#c2">Product page</a>
+  <a class="l" href="#c3">Cart</a>
+  <a class="l" href="#c4">Checkout</a>
+  <a class="l" href="#c5">Payment</a>
+  <a class="l" href="#c6">After</a>
+  <a class="l" href="#others">Other shoppers</a>
+  <a class="l" href="#table">Whole journey</a>
+  <a class="l" href="#impact">Impact</a>
+  <a class="l" href="#live">Getting live</a>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">For Lakshita</div>
+  <div class="sub2">A Customer Journey Proposal</div>
+  <h1>What if Neha knew her sangeet outfit would reach her on time, before she paid?</h1>
+  <p class="lead">Lakshita has been dressing women since 2000, with sizes from XS to 4XL and free lifetime alterations. Festive velvet is at its peak, and every order carries a date. This proposal follows one shopper, Neha, from the moment she lands on your site to the moment the parcel arrives, and shows what Fastrr adds at each step.</p>
+  <div class="meta">
+    <div>Prepared for<b>Lakshita</b></div>
+    <div>Format<b>One illustrative shopper, six chapters</b></div>
+    <div>Scope<b>Product page, cart, checkout, payment and after</b></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>7 lakh</b><span>Parcels a day behind Fastrr's address pre-fill</span></div>
+    <div class="stat"><b>95%+</b><span>Address pre-fill at checkout</span></div>
+    <div class="stat"><b>40-45%</b><span>Anonymous visitors identified</span></div>
+    <div class="stat"><b>-17%</b><span>RTO with risk tags at a beauty brand</span></div>
+  </div>
+</div></header>
+
+<section class="alt"><div class="wrap">
+  <div class="kick">How to read this proposal</div>
+  <h2 class="t">Six chapters, one evening, one wedding.</h2>
+  <div class="persona">
+    <div class="avatar">N</div>
+    <div>
+      <b style="font-size:20px">Neha, 31, Pune. Her cousin's sangeet is on Saturday 5 December.</b>
+      <p class="small" style="margin-top:8px;font-size:16px">She saw a velvet kurta set in an Instagram reel and wants it for the sangeet. It is Thursday night, she shops on her phone, and she has two questions: will it reach her before Saturday, and is it worth ₹7,000 to buy without trying it on?</p>
+      <div class="tags"><span class="tag">Festive buyer</span><span class="tag">Hard deadline</span><span class="tag">Shops on mobile</span></div>
+    </div>
+  </div>
+  <div class="idx">
+    <a href="#c1"><i>1</i><b>Arrives</b><span>Visitor recognition</span></a>
+    <a href="#c2"><i>2</i><b>Product page</b><span>Delivery date (EDD)</span></a>
+    <a href="#c3"><i>3</i><b>Cart</b><span>Offers, milestone, AI upsell</span></a>
+    <a href="#c4"><i>4</i><b>Checkout</b><span>Pre-fill, SSO, one page</span></a>
+    <a href="#c5"><i>5</i><b>Payment</b><span>QuickPay, risk tags, Pay After Delivery</span></a>
+    <a href="#c6"><i>6</i><b>After</b><span>Delivery promise, failed-delivery tags</span></a>
+  </div>
+  <p class="small" style="margin-top:16px">Everything about Lakshita comes from lakshita.com as of 26 November 2026. Neha, the screens and the messages are illustrative.</p>
+</div></section>
+
+<!-- CHAPTER 1 -->
+<section id="c1"><div class="wrap">
+  <div class="kick">Chapter 1 · Arrives</div>
+  <div class="ts">Thu 26 Nov · 8:52 pm</div>
+  <h2 class="t">Neha lands from a reel. The page already knows where she is.</h2>
+  <p class="sub">Most festive traffic comes in cold. A shopper from a reel has no account and no history with you, so the first screens treat her like a stranger, and the delivery question waits until she types a pincode.</p>
+  <div class="moment">
+    <div>
+      <div class="cols">
+        <div class="col"><h5>Without Fastrr</h5><ul>
+          <li>Anonymous visitor, generic page.</li>
+          <li>The delivery estimate waits until she enters a pincode on a product page.</li>
+          <li>Offers sit in banners across the site.</li>
+        </ul></div>
+        <div class="col f"><h5>With Fastrr</h5><ul>
+          <li>The network recognises a share of anonymous visitors, so a pincode-aware experience can start on the first page.</li>
+          <li>Her delivery date is ready before she asks.</li>
+          <li>Free shipping on all orders is shown as it applies.</li>
+        </ul></div>
+      </div>
+      <div class="feat"><h4>Anonymous visitor identification</h4><p>Fastrr identifies about 40 to 45% of anonymous visitors using delivery data from the Shiprocket network, where a visitor can be matched. Other tools in the market identify about 30 to 35%.</p><span class="src">Live on Coitonic</span></div>
+      <div class="feat"><h4>Why it matters for festive buying</h4><p>Festive shoppers arrive close to a date and leave quickly if the date is unclear. Showing it early keeps the visit going.</p></div>
+    </div>
+    <div class="phone">
+      <div class="pbar"><span>Lakshita</span><span>☰</span></div>
+      <div class="pbody">
+        <div class="ban"><b>Delivering to 411045?</b> Get it by <b>Tue, 1 Dec</b></div>
+        <div class="pimg" style="background:linear-gradient(145deg,#6a2a73,#251030);height:130px"><svg viewBox="0 0 100 100" fill="none" stroke="#f3dff0" stroke-width="3" stroke-linejoin="round"><path d="M34 14l-18 14 8 14 10-5v43h32V37l10 5 8-14-18-14c-3 7-8 10-16 10s-13-3-16-10z"/></svg></div>
+        <div class="pt">Velvet kurta sets</div>
+        <div class="small" style="font-size:13px">Kurta sets · Co-ords · Coats · Jewellery</div>
+        <div class="box" style="font-size:13.5px">Free shipping on all orders in India</div>
+        <div class="hint">Illustrative mock-up. The banner shows how a recognised visitor could see a date on the first page.</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CHAPTER 2 -->
+<section id="c2" class="alt"><div class="wrap">
+  <div class="kick">Chapter 2 · Product page</div>
+  <div class="ts">Thu 26 Nov · 9:03 pm</div>
+  <h2 class="t">She loves the kurta set. She wonders: "Will it reach before Saturday?"</h2>
+  <p class="sub">Your product pages do have a pincode checker: "Enter Pincode to calculate estimated delivery time". A banner promises Delhi in 24 hours and Punjab in 48. Neha is in neither, so she has to find the box, type six digits and wait, with a ₹6,995 decision riding on the answer.</p>
+  <div class="moment">
+    <div>
+      <div class="cols">
+        <div class="col"><h5>Without Fastrr (public pages today)</h5><ul>
+          <li>No delivery date shows until a pincode is typed.</li>
+          <li>The 24-hour and 48-hour promises cover Delhi and Punjab.</li>
+          <li>"Add to cart" and "Buy It Now" both sit on the page.</li>
+        </ul></div>
+        <div class="col f"><h5>With Fastrr</h5><ul>
+          <li>A real date for her pincode, shown without her asking.</li>
+          <li>Built from the network that ships the parcel, using live courier performance.</li>
+          <li>Repeated in the cart and at checkout, so the promise holds.</li>
+        </ul></div>
+      </div>
+      <div class="feat"><h4>Dynamic EDD</h4><p>"Get it by Tue 1 Dec." For a wedding week, a date beats a range, and it removes the one question that stops a festive order.</p><span class="src">Live on Hidesign</span></div>
+      <div class="proof"><b>2 to 5%</b><span>conversion increments seen from the delivery date widget on Fastrr brands.</span></div>
+    </div>
+    <div class="phone">
+      <div class="pbar"><span>Lakshita</span><span>☰</span></div>
+      <div class="pbody">
+        <div class="pimg" style="background:linear-gradient(145deg,#6a2a73,#251030)"><svg viewBox="0 0 100 100" fill="none" stroke="#f3dff0" stroke-width="3" stroke-linejoin="round"><path d="M34 14l-18 14 8 14 10-5v43h32V37l10 5 8-14-18-14c-3 7-8 10-16 10s-13-3-16-10z"/></svg></div>
+        <div class="pt">Varnika Royal Purple Embroidered Velvet Kurta Set</div>
+        <div class="pp" style="margin-top:6px">₹6,995 <s>incl. of all taxes</s></div>
+        <div class="sizes"><span>S</span><span>M</span><span class="s">L</span><span>XL</span><span>2X</span><span>4X</span></div>
+        <div class="box edd"><b>Get it by Tue, 1 Dec <span class="good" style="font-size:13px">· to 411045</span></b><span class="small" style="font-size:12.5px">In time for Saturday's sangeet</span></div>
+        <div class="box" style="font-size:13px">First order: 10% off with WELCOME10<br>Extra 5% off on prepaid orders</div>
+        <button class="btn acc">Add to cart</button>
+        <div class="hint">Illustrative mock-up. Product, price, sizes and offers are from lakshita.com. The date is an example; real dates would come from live courier data.</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CHAPTER 3 -->
+<section id="c3"><div class="wrap">
+  <div class="kick">Chapter 3 · Cart</div>
+  <div class="ts">Thu 26 Nov · 9:06 pm</div>
+  <h2 class="t">The offers are good. In the cart, Neha can see them working.</h2>
+  <p class="sub">Your site carries a first-order code, an extra 5% on prepaid orders and a Black Friday Bazaar. For a shopper at 9 pm, that is three offers to piece together. The cart is where they can be added up for her, and where a matching piece can lift the basket.</p>
+  <div class="moment">
+    <div>
+      <div class="cols">
+        <div class="col"><h5>Without Fastrr (public pages today)</h5><ul>
+          <li>A first-order code to type: WELCOME10.</li>
+          <li>The prepaid saving shows as a line on the product page.</li>
+          <li>The cart header reads "Cart 0", and one product page we opened said "You are ₹100 away from free shipping", while your homepage says free shipping on all orders.</li>
+        </ul></div>
+        <div class="col f"><h5>With Fastrr</h5><ul>
+          <li>Coupons and offers shown in the cart, with no code hunting.</li>
+          <li>A milestone bar built on your own rule.</li>
+          <li>A matching piece opens inside the cart and is added in one tap.</li>
+        </ul></div>
+      </div>
+      <div class="feat"><h4>Milestone bar</h4><p>Free shipping is already yours, so the bar points at the next step. The ₹500 milestone at ₹9,000 here is an example, not your rule.</p></div>
+      <div class="feat"><h4>Expandable AI upsell</h4><p>A neckline-matched piece from LK Jewels opens in the cart and is added in one tap. Try it in the cart: add the necklace, then switch between UPI and cash on delivery.</p><span class="src">Smart cart live on Kicky and Perky</span></div>
+      <div class="proof"><b>+6%</b><span>average order value seen from cart upsells on Fastrr brands.</span></div>
+    </div>
+    <div class="phone">
+      <div class="pbar"><span>Your cart</span><span id="cc">1 item</span></div>
+      <div class="pbody">
+        <div class="msg" id="cmsg">Add <em>₹2,005</em> more to unlock <em>₹500 off</em></div>
+        <div class="trk"><div class="fl" id="cfl" style="width:78%"></div>
+          <div class="nd done" style="left:0%">✓<small>Free shipping<br>applied</small></div>
+          <div class="nd" id="cnd" style="left:100%">₹<small>₹500 off<br>at ₹9,000</small></div>
+        </div>
+        <div class="box"><div class="ci"><div class="cth" style="background:linear-gradient(145deg,#6a2a73,#251030)"></div><div style="flex:1"><div style="font-weight:700;line-height:1.15;font-size:13.5px">Varnika Royal Purple Velvet Kurta Set</div><div class="small" style="font-size:12.5px">Size L</div></div><b>₹6,995</b></div></div>
+        <div style="font-weight:700;margin:14px 0 2px;font-family:var(--serif);font-size:16px">Complete the look</div>
+        <div class="box"><div class="ci"><div class="cth" style="background:linear-gradient(145deg,#1f7a5a,#0c3326)"></div><div style="flex:1"><div style="font-weight:700;line-height:1.15;font-size:13.5px">Emerald Green Vanya Multilayer Bead Necklace</div><div class="small" style="font-size:12.5px">₹2,095</div></div><button class="addb" id="addb">+ Add</button></div></div>
+        <div style="font-weight:700;margin:14px 0 0;font-family:var(--serif);font-size:16px">Pay with</div>
+        <button class="opt sel" id="oUpi"><span><b>UPI · prepaid</b><span class="s">Extra 5% off</span></span><span class="pr" id="upiPr">-₹350</span></button>
+        <button class="opt" id="oCod"><span><b>Cash on delivery</b><span class="s">No prepaid saving</span></span><span class="pr">₹0</span></button>
+        <div class="unl" id="unl">₹500 off unlocked</div>
+        <div class="row" style="margin-top:14px"><span>Total</span><b id="ctot" style="font-size:20px">₹6,645</b></div>
+        <button class="btn">Checkout</button>
+        <div class="hint">Illustrative mock-up. Products, prices and the 5% prepaid offer are from lakshita.com; the ₹500 milestone is an example.</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CHAPTER 4 -->
+<section id="c4" class="alt"><div class="wrap">
+  <div class="kick">Chapter 4 · Checkout</div>
+  <div class="ts">Thu 26 Nov · 9:09 pm</div>
+  <h2 class="t">One page. Nothing to type. She is done in a few taps.</h2>
+  <p class="sub">Neha is ordering on a phone, against a deadline. Every field she types is time she does not have, and a mistyped pincode on a ₹9,000 festive order is a parcel that misses the wedding.</p>
+  <div class="moment">
+    <div>
+      <div class="cols">
+        <div class="col"><h5>Without Fastrr (public pages today)</h5><ul>
+          <li>A new shopper types name, address, pincode and phone.</li>
+          <li>The discount code is entered here, after the cart.</li>
+        </ul></div>
+        <div class="col f"><h5>With Fastrr</h5><ul>
+          <li>Address pre-filled for returning and recognised shoppers.</li>
+          <li>The delivery date she saw, carried through.</li>
+          <li>One page, in your look.</li>
+        </ul></div>
+      </div>
+      <div class="feat"><h4>Address pre-fill above 95%</h4><p>Addresses come from real deliveries across the Shiprocket network, so fewer wrong pincodes and fewer parcels lost to a bad address.</p></div>
+      <div class="feat"><h4>SSO and QuickPay</h4><p>Returning shoppers skip OTPs, address entry and payment selection, and UPI is one tap.</p></div>
+      <div class="proof"><b>61% to 89%</b><span>address pre-fill at a live apparel brand, with prepaid 13% to 23% and conversion 0.37% to 0.6%. Same category, results vary.</span></div>
+    </div>
+    <div class="phone">
+      <div class="pbar"><span>Secure checkout</span><span class="okc" style="color:#9fe3bf">● Fastrr</span></div>
+      <div class="pbody">
+        <div class="box" style="margin-top:0"><b>Welcome back, Neha</b><br><span class="small" style="font-size:13px">Signed in with one tap</span></div>
+        <div class="box"><span class="small" style="font-size:12.5px">Deliver to</span><br><b>Home</b> · pre-filled from a previous delivery<br><span class="small" style="font-size:13px">Pune 411045</span> <span class="okc">Pre-filled</span></div>
+        <div class="box edd"><b>Get it by Tue, 1 Dec</b><span class="small" style="font-size:13px">The date she saw on the product page</span></div>
+        <div class="box"><div class="row"><span>Kurta set + necklace</span><b>₹9,090</b></div><div class="row small" style="font-size:12.5px"><span>Milestone offer (example)</span><span>-₹500</span></div><div class="row small" style="font-size:12.5px"><span>Prepaid, extra 5%</span><span>-₹430</span></div><div class="okc">Free shipping</div></div>
+        <div class="pay on">UPI · pre-selected, one tap</div>
+        <button class="btn acc">Pay ₹8,160</button>
+        <div class="hint">Illustrative. Name, address, date and totals are examples.</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CHAPTER 5 -->
+<section id="c5"><div class="wrap">
+  <div class="kick">Chapter 5 · Payment and risk</div>
+  <div class="ts">Thu 26 Nov · 9:10 pm</div>
+  <h2 class="t">She pays in one tap. Behind the scenes, every order is read before it ships.</h2>
+  <p class="sub">Most shoppers want to pay and move on. But a ₹7,000 kurta set sent on cash on delivery that is refused costs you two-way shipping and a garment that comes back. COD orders carry about 65% higher RTO risk, and the network can tell which ones are likely to return before you dispatch.</p>
+  <div class="moment">
+    <div>
+      <div class="cols">
+        <div class="col"><h5>Without Fastrr (public pages today)</h5><ul>
+          <li>An extra 5% off on prepaid orders, a good nudge.</li>
+          <li>Cash on delivery is available, as your FAQ describes.</li>
+          <li>Every order is treated alike at dispatch.</li>
+        </ul></div>
+        <div class="col f"><h5>With Fastrr</h5><ul>
+          <li>QuickPay and payment personalisation, so each shopper sees the method most likely to complete.</li>
+          <li>RTO risk tags before the order is packed.</li>
+          <li>Pay After Delivery for hesitant shoppers.</li>
+        </ul></div>
+      </div>
+      <div class="feat"><h4>RTO risk tags and rules</h4><p>Scored from pincode, address and buyer history against real delivery outcomes. You set the rule: show only prepaid or Pay After Delivery for a high-risk first-time COD order, or switch COD off for it.</p></div>
+      <div class="feat"><h4>Pay After Delivery</h4><p>A hesitant shopper approves with UPI and is charged only after delivery. It cannot be cancelled in transit, and the courier sees a prepaid parcel.</p><span class="src">Live on Coitonic</span></div>
+      <div class="feat"><h4>0% MDR on prepaid</h4><p>With eligible gateways, the gateway fee is folded into one checkout fee. Commercials by payment mode are shared separately.</p></div>
+      <div class="proof"><b>RTO down 17%</b><span>with risk tags at a beauty brand. At a women's clothing brand on Pay After Delivery, COD fell 10% and prepaid rose 3%, with 7% of orders on PAD. Results vary by brand.</span></div>
+    </div>
+    <div class="phone">
+      <div class="pbar"><span>Payment</span><span style="font-size:13px">₹8,160</span></div>
+      <div class="pbody">
+        <div class="pay on"><div class="row"><span>UPI</span><span class="okc">Pre-selected</span></div><div class="small" style="font-size:12.5px">Extra 5% prepaid saving applied</div></div>
+        <div class="pay">Cards and netbanking</div>
+        <div class="pay"><div class="row"><span>Cash on delivery</span><span class="small" style="font-size:12.5px">no saving</span></div></div>
+        <div class="box" style="margin-top:14px"><b style="font-size:14px">Behind the scenes, before it ships</b>
+          <div class="risk"><span class="rt">First-time buyer</span><span class="rt">Pincode: high refusal</span><span class="rt">COD</span></div>
+          <div class="small" style="font-size:13px;margin-top:8px">Show only prepaid or Pay After Delivery.</div></div>
+        <div class="pay" style="border-style:dashed"><div style="font-weight:700">Pay After Delivery</div><div class="small" style="font-size:13px">Approve with UPI. Charged only after delivery.</div></div>
+        <div class="hint">Illustrative mock-up. Risk tags are not shown to shoppers.</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CHAPTER 6 -->
+<section id="c6" class="alt"><div class="wrap">
+  <div class="kick">Chapter 6 · After</div>
+  <div class="ts">Fri 27 Nov onwards</div>
+  <h2 class="t">The date she saw is the date she gets, and a missed delivery is caught early.</h2>
+  <p class="sub">After the order, Neha waits. The promise she saw at checkout is what she measures everything against, and a failed delivery the day before a sangeet is the worst outcome for her and for you.</p>
+  <div class="moment">
+    <div>
+      <div class="cols">
+        <div class="col"><h5>Without Fastrr (public pages today)</h5><ul>
+          <li>Orders are dispatched within 24 hours, with tracking through Shiprocket.</li>
+          <li>Size exchanges within 14 days, in line with your policy.</li>
+        </ul></div>
+        <div class="col f"><h5>With Fastrr</h5><ul>
+          <li>The same delivery date, tracked through the network.</li>
+          <li>Failed-delivery (NDR) tags, so a bad address or an absent buyer is flagged early.</li>
+          <li>One-tap reorder for the next occasion through SSO.</li>
+        </ul></div>
+      </div>
+      <div class="feat"><h4>NDR tags</h4><p>When a delivery attempt fails, the reason is tagged and acted on quickly, so the outfit is not sent back a day before the occasion.</p></div>
+      <div class="feat"><h4>Reorder with SSO</h4><p>For the next wedding, Neha signs in with one tap and her address is already there.</p></div>
+      <p class="small" style="margin-top:14px">We will confirm in the demo which post-order messages run through Fastrr and which stay with your current setup.</p>
+    </div>
+    <div class="phone">
+      <div class="pbar"><span>Messages</span><span style="font-size:13px">Lakshita</span></div>
+      <div class="pbody">
+        <div class="wa">
+          <div class="bub"><b>Order confirmed</b>Neha, your kurta set is on its way to you. Delivery by Tue, 1 Dec.<span class="lk">Track order</span><span class="t">9:12 pm</span></div>
+          <div class="bub"><b>Out for delivery</b>Your parcel is out for delivery today and will reach you by 8 pm.<span class="t">Tue 9:05 am</span></div>
+          <div class="bub"><b>Delivery attempt</b>We could not reach you. Reply with a good time and we will try again today.<span class="lk">Choose a time</span><span class="t">Tue 2:40 pm</span></div>
+        </div>
+        <div class="hint">Illustrative messages. Wording and channel to be confirmed with you.</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- OTHERS -->
+<section id="others"><div class="wrap">
+  <div class="kick">Not every customer is Neha</div>
+  <h2 class="t">The same checkout works differently for different shoppers.</h2>
+  <div class="pcards">
+    <div class="pc"><div class="av">P</div><h4>Pooja</h4><div class="loc">Ludhiana · first order, buying a kurta set for herself</div><p>Picks cash on delivery on a ₹6,995 set because it is her first time with the brand.</p><span class="pill">Risk tags + Pay After Delivery</span><p class="out">The order is scored before it ships, and she is offered a way to pay after delivery.</p></div>
+    <div class="pc"><div class="av">A</div><h4>Anita</h4><div class="loc">Jaipur · plus-size, sizes 2X to 4X</div><p>Types an address with only a landmark and no clear pincode, on a small phone.</p><span class="pill">Address pre-fill</span><p class="out">A recognised address fills in, so the parcel does not stall at the first delivery attempt.</p></div>
+    <div class="pc"><div class="av">M</div><h4>Meera</h4><div class="loc">Delhi · ordered last Diwali</div><p>Returns for a winter coat and does not want to type everything again.</p><span class="pill">SSO + QuickPay</span><p class="out">One tap to sign in, one tap to pay.</p></div>
+  </div>
+</div></section>
+
+<!-- TABLE -->
+<section id="table" class="alt"><div class="wrap">
+  <div class="kick">The whole journey on one page</div>
+  <h2 class="t">Six stages, and what Fastrr adds at each.</h2>
+  <table>
+    <tr><th>Stage</th><th>What Neha experiences</th><th>What Fastrr adds</th></tr>
+    <tr><td>1 · Arrives</td><td>A page that already knows her pincode</td><td>Anonymous visitor identification</td></tr>
+    <tr><td>2 · Product page</td><td>A date, without typing a pincode</td><td>Dynamic EDD</td></tr>
+    <tr><td>3 · Cart</td><td>Offers added up, a milestone, a matching piece</td><td>Offers in cart, milestone bar, AI upsell</td></tr>
+    <tr><td>4 · Checkout</td><td>One page, nothing to type</td><td>Address pre-fill above 95%, SSO</td></tr>
+    <tr><td>5 · Payment</td><td>One-tap UPI, a safe way to pay later</td><td>QuickPay, risk tags, Pay After Delivery, 0% MDR</td></tr>
+    <tr><td>6 · After</td><td>The date she was promised, or an early warning</td><td>NDR tags, SSO reorder</td></tr>
+  </table>
+  <h3 style="margin-top:44px;font-size:26px">What stays Lakshita</h3>
+  <p class="sub" style="font-size:18px;margin-top:8px">Taken from your own published pages. These are the things to keep, and what we will confirm in the demo.</p>
+  <table>
+    <tr><th>Lakshita today</th><th>What we will confirm in the demo</th></tr>
+    <tr><td>Free shipping on all orders in India</td><td><span class="pillc">Confirm</span>The current rule. One product page showed "₹100 away from free shipping", so we will make sure the cart says what the homepage says.</td></tr>
+    <tr><td>Same-day or 24-hour dispatch</td><td><span class="pillo">Keep</span>The delivery date is built on your dispatch time.</td></tr>
+    <tr><td>Delhi in 24 hours, Punjab in 48</td><td><span class="pillo">Keep</span>How those promises fold into a date for every pincode.</td></tr>
+    <tr><td>Free lifetime alterations, done in store</td><td><span class="pillo">Keep</span>Untouched. We will check that the order number on the invoice carries across.</td></tr>
+    <tr><td>WELCOME10 and an extra 5% on prepaid</td><td><span class="pillc">Confirm</span>How both show in the cart together, and which offers stack.</td></tr>
+    <tr><td>Return and exchange windows</td><td><span class="pillc">Confirm</span>Pages word them differently (7 or 14 days for returns, 14 days for size exchanges, 21 days in the FAQ), with no exchange at 50% off or more and refunds to a wallet. We will confirm which applies, so every page says the same thing.</td></tr>
+    <tr><td>Cash on delivery</td><td><span class="pillc">Confirm</span>Current COD rules, any fee or order-value limit, and how risk-tag rules should work with them.</td></tr>
+    <tr><td>Your payment gateway</td><td><span class="pillc">Confirm</span>Zero MDR works with a defined set of gateways. We will check yours.</td></tr>
+  </table>
+</div></section>
+
+<!-- IMPACT -->
+<section id="impact"><div class="wrap">
+  <div class="kick">The impact, on its own</div>
+  <h2 class="t">What Fastrr brands have seen, step by step.</h2>
+  <div class="igrid">
+    <div class="ig"><b>2 to 5%</b><span>Conversion increments from the delivery date widget</span></div>
+    <div class="ig"><b>+6%</b><span>Average order value from cart upsell</span></div>
+    <div class="ig"><b>95%+</b><span>Address pre-fill at checkout</span></div>
+    <div class="ig"><b>+3%</b><span>Prepaid at a women's clothing brand on Pay After Delivery</span></div>
+    <div class="ig"><b>-10%</b><span>COD at that brand, with 7% of orders on PAD</span></div>
+    <div class="ig"><b>-17%</b><span>RTO with risk tags at a beauty brand</span></div>
+  </div>
+  <p class="small" style="margin-top:14px">These figures come from Fastrr brands and Shiprocket network data. They are not projections for Lakshita and would be measured, not assumed.</p>
+  <div class="ccards">
+    <div class="cc"><h4>Apparel brand</h4>
+      <div class="r"><span>Address pre-fill</span><b>61% to 89%</b></div>
+      <div class="r"><span>Prepaid share</span><b>13.06% to 23.30%</b></div>
+      <div class="r"><span>Conversion</span><b>0.37% to 0.6%</b></div></div>
+    <div class="cc"><h4>Footwear brand</h4>
+      <div class="r"><span>Address pre-fill</span><b>65% to 89%</b></div>
+      <div class="r"><span>Prepaid share</span><b>11% to 43%</b></div>
+      <div class="r"><span>Conversion</span><b>1.27% to 1.50%</b></div></div>
+    <div class="cc"><h4>Personal care brand</h4>
+      <div class="r"><span>Address pre-fill</span><b>70% to 93%</b></div>
+      <div class="r"><span>Prepaid share</span><b>19% to 28%</b></div>
+      <div class="r"><span>Conversion</span><b>2.13% to 3.04%</b></div></div>
+  </div>
+</div></section>
+
+<!-- LIVE -->
+<section id="live" class="alt"><div class="wrap">
+  <div class="kick">Getting to live</div>
+  <h2 class="t">No commitment. No disruption. Just data.</h2>
+  <div class="ngrid">
+    <div class="ncard"><i>01</i><h4>See it on your pages</h4><p>A 30-minute Google Meet showing Neha's journey on your own product page, cart and checkout.</p></div>
+    <div class="ncard"><i>02</i><h4>Test side by side</h4><p>Run Fastrr on a share of traffic next to your current checkout, or keep your checkout and add address pre-fill and NDR tags first.</p></div>
+    <div class="ncard"><i>03</i><h4>Decide on the data</h4><p>Read conversion, prepaid share and RTO together, and decide how far to take it.</p></div>
+  </div>
+  <div class="cta">
+    <div><h3>Let's walk Neha's journey on your store.</h3><p>30 minutes on Google Meet, around your calendar. It helps to bring monthly orders, COD and RTO rates, and your payment gateway.</p></div>
+    <a class="b" href="mailto:kutiarunava@gmail.com?subject=Fastrr%20x%20Lakshita%20journey%20demo">Let's Talk Journey</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <b style="color:var(--ink);font-size:15px">fastrr · Prepared by Arunava Nag, Manager, Enterprise Sales, Fastrr by Shiprocket</b>
+  <p>Prepared for Lakshita. Neha and the other customers, the messages and the screens are illustrative, and are not Lakshita's live pages. Product names, prices, offers, policies and delivery promises are as published on lakshita.com on 26 November 2026 and may change. Dates, the ₹500 milestone and all totals in the mock-ups are examples. Results quoted are from Fastrr brands and Shiprocket network data, and will vary. Commercials are shared separately.</p>
+</div></footer>
+
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.nav a.l'));
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){links.forEach(function(a){a.classList.remove('on')});var a=map[e.target.id];if(a)a.classList.add('on')}
+    })},{rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(map).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el)});
+  }
+  var KURTA=6995,NECK=2095,MILE=9000,OFF=500;
+  var hasN=false,upi=true;
+  function inr(n){return '₹'+n.toLocaleString('en-IN')}
+  function render(){
+    var sub=KURTA+(hasN?NECK:0);
+    var off=sub>=MILE?OFF:0;
+    var after=sub-off;
+    var pp=upi?Math.round(after*0.05):0;
+    document.getElementById('ctot').textContent=inr(after-pp);
+    document.getElementById('cc').textContent=hasN?'2 items':'1 item';
+    document.getElementById('upiPr').textContent='-'+inr(pp||Math.round(after*0.05));
+    var msg=document.getElementById('cmsg'),unl=document.getElementById('unl'),nd=document.getElementById('cnd');
+    document.getElementById('cfl').style.width=Math.min(100,Math.round(sub/MILE*100))+'%';
+    if(off){msg.innerHTML='<em>₹500 off</em> unlocked';unl.classList.add('show');nd.classList.add('done')}
+    else{msg.innerHTML='Add <em>'+inr(MILE-sub)+'</em> more to unlock <em>₹500 off</em>';unl.classList.remove('show');nd.classList.remove('done')}
+    document.getElementById('oUpi').classList.toggle('sel',upi);
+    document.getElementById('oCod').classList.toggle('sel',!upi);
+  }
+  var ab=document.getElementById('addb');
+  ab.addEventListener('click',function(){hasN=!hasN;ab.classList.toggle('on',hasN);ab.textContent=hasN?'Added ✓':'+ Add';render()});
+  document.getElementById('oUpi').addEventListener('click',function(){upi=true;render()});
+  document.getElementById('oCod').addEventListener('click',function(){upi=false;render()});
+  render();
+})();
+</script>
+</body>
+</html>
